@@ -1,11 +1,12 @@
 <template>
-  <div>
-      <div class="columns is-multiline" @scroll="scroll">
+  <div >
+      <div class="columns is-multiline" >
           <div class="column is-one-quarter" v-for="result in results" :key="result.id">
             <character-card :character="result">
             </character-card>
           </div>
       </div>
+      <h1 class="is-size-1" v-if="!info.next">There is no more results</h1>
   </div>
 </template>
 
@@ -21,6 +22,8 @@ export default {
             this.info = response.data.info;
             this.results = response.data.results;
         });
+        
+        window.addEventListener('scroll', this.scroll);
     },
     data(){
         return {
@@ -39,15 +42,18 @@ export default {
             axios.get(this.info.next).then(response => {
                 console.log(response.data);
                 this.info = response.data.info;
-                this.results = response.data.results;
+                this.results.push(...response.data.results);
             });
         },
-        scroll(event){
-            console.log(event);
+        scroll(){
+            console.log(window.scrollY + window.innerHeight, document.body.clientHeight);
+            if(window.scrollY + window.innerHeight > document.body.clientHeight - 100 && this.info.next){
+                this.next();
+            }
         }
     }
 }
 </script>
 
 <style>
-</style> 
+</style>

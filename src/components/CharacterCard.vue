@@ -12,7 +12,7 @@
     </div>
     <div class="card-content">
         <div class="content">
-
+            
         </div>
     </div>
 </div>
@@ -25,4 +25,4 @@ export default {
 </script>
 
 <style>
-</style> 
+</style>

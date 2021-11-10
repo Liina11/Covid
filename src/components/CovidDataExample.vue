@@ -56,11 +56,11 @@ export default {
         },
         sortedCountries(){
             return this.filteredCountries.sort((a, b) => {
-                
+                let order = this.sort.order == 'desc' ? -1 : 1;
                 if(a[this.sort.field] > b[this.sort.field]){
-                    return 1;
+                    return 1 * order;
                 } else if(a[this.sort.field] < b[this.sort.field]){
-                    return -1;
+                    return -1 * order;
                 }
                 return 0;
             });

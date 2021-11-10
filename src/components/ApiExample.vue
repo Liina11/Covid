@@ -3,22 +3,21 @@
 </template>
 
 <script>
+const axios = require('axios');
 export default {
-cerated(){
-    axios.get('https://api.chucknorris.io/jokes/random').then(response => {
-        console.log(response.data);
-        this.joke = response.data.value;
-    });
-},
-data(){
-    return{
-        joke:''
-        
+    created(){
+        axios.get('https://api.chucknorris.io/jokes/random').then(response => {
+            console.log(response.data);
+            this.joke = response.data.value;
+        });
+    },
+    data(){
+        return {
+            joke: ''
+        }
     }
-}
 }
 </script>
 
 <style>
-
 </style>

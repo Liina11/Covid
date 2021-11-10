@@ -1,51 +1,34 @@
 <template>
-  <canvas id="myChart" width="400" height="400"></canvas>
+<div>
+    <button class="button is-primary" @click="addVote">add vote</button>
+    <chart :data="votes" type="line" :labels="labels"></chart>
+</div>
 </template>
 
 <script>
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+import Chart from './Chart.vue';
 export default {
-mounted(){
-    const ctx = document.getElementById('myChart');
-    const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+    components: {Chart},
+    data(){
+        return{
+            votes:[12, 19, 1, 5, 69, 3],
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            types:['bar', 'line', 'radar', 'pie', 'doughnut', 'polarArea', 'bubble', 'scatter'],
+            active: 0
+        }
     },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+    methods: {
+        addVote(){
+            // this.votes[0]++;
+            // this.$set(this.votes, 0, this.votes[0]+1);
+            let changedVotes = [...this.votes];
+            changedVotes[0]++;
+            this.votes = changedVotes;
+            // this.votessplice(0,1,this.votes[0]+1)
         }
     }
-});
-}
 }
 </script>
 
 <style>
-
 </style>

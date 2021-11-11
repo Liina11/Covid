@@ -16,6 +16,7 @@ import RickAndMortyExample from './components/RickAndMortyExample.vue';
 import ToDoExample from './components/ToDoExample.vue';
 import CovidCountryExample from './components/CovidCountryExample.vue';
 import ChartExample from './components/ChartExample.vue';
+import MapExample from'./components/MapExample.vue';
 
 Vue.component('app', App);
 
@@ -30,6 +31,7 @@ let router = new Router({
         {path:'rickandmorty', component: RickAndMortyExample},
         {path:'/todo', component: ToDoExample},
         {path:'/chart', component: ChartExample},
+        {path:'/map', component: MapExample},
 
     ]
 })

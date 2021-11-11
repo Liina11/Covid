@@ -3,7 +3,6 @@
         <canvas ref="myChart" width="1800px" height="800px"></canvas>
 </div>
 </template>
-
 <script>
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -14,6 +13,7 @@ export default {
         this.myChart = new Chart(ctx, {
     type: this.type,
     data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         labels: this.labels,
         datasets: [{
             label: '# of Votes',
@@ -79,7 +79,5 @@ console.log(this.myChart);
         }
 }
     </script>
-
-
 <style>
 </style>

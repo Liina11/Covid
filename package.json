@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.12.9",
     "axios": "^0.23.0",
     "boxen": "^5.0.1",
     "bulma": "^0.9.3",
